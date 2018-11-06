@@ -15,7 +15,7 @@ const Header = () => {
                 <ul>
                     {list}
                     <li className='nav-item'>
-                        <NavLink to='/bookmarked'>
+                        <NavLink to='/bookmark'>
                             <i className='fa fa-fw fa-bookmark' />
                             bookmark
                         </NavLink>
