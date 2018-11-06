@@ -1,0 +1,25 @@
+header {
+  box-shadow: 0 10px 0 rgba(0, 0, 0, .38);
+  nav {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    > ul {
+      display: flex;
+      flex-flow: row wrap;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+.nav-item {
+  padding: 1em;
+}
+.app-logo {
+  &.-nav {
+    height: 86px;
+    width: auto;
+  }
+}
