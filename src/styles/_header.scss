@@ -14,12 +14,28 @@ header {
     }
   }
 }
-.nav-item {
-  padding: 1em;
+.nav-item a{
+  padding: .618em 1em;
+  margin: 0 .382em;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: $white;
+  text-decoration: none;
+  border-radius: 22px;
+  &:hover {
+    background-color: darken($orange, 10)
+  }
+  &.active, &.active:hover {
+    background-color: $body;
+    color: $orange;
+  }
 }
 .app-logo {
   &.-nav {
     height: 86px;
     width: auto;
   }
+}
+a.search-icon {
+  margin-right: 1em;
 }

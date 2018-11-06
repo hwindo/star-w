@@ -6,6 +6,7 @@ export default () => {
             <div className="container">
                 <div className='go-top'>
                     go to top
+                    <i className='fa fa-fw fa-arrow-up' />
                 </div>
             </div>
         </footer>

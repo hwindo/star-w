@@ -14,10 +14,18 @@ const Header = () => {
                 </NavLink>
                 <ul>
                     {list}
-                    <li className='nav-item'><NavLink to='/bookmarked'>bookmark</NavLink></li>
+                    <li className='nav-item'>
+                        <NavLink to='/bookmarked'>
+                            <i className='fa fa-fw fa-bookmark' />
+                            bookmark
+                        </NavLink>
+                    </li>
                 </ul>
                 <div>
-                    <a>search</a>
+                    <a className='search-icon'>
+                        search
+                        <i className='fa fa-fw fa-search' />
+                    </a>
                 </div>
             </nav>
         </header>

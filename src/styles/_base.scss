@@ -2,11 +2,13 @@ body {
   font-size: 1em;
   line-height: 1.618em;
   color: $body-font-dark;
-  background-color: $body
+  background-color: $body;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 h1 {
   font-size: 67.96px;
+  font-weight: 300;
 }
 
 h1, h2, h3, h4, h5, h6 {
