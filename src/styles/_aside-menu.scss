@@ -8,6 +8,8 @@
 
 #aside-menu {
   display: none;
+  position: fixed;
+  top: 0;
   flex-flow: column wrap;
   justify-content: center;
   align-items: center;
@@ -31,13 +33,13 @@
   }
   .aside-item {
     list-style: none;
-    padding: 1.618em;
+    padding: .618em;
     a {
       color: $white;
       font-size: 1.618em;
       font-weight: 700;
       line-height: 1.618em;
-      padding: 1em 1.618em;
+      padding: .382em 1.618em;
       border-radius: 1.618em;
 
       &:hover {

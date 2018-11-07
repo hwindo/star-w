@@ -1,11 +1,8 @@
 import React from 'react';
+import {scrollTop} from "../helper";
+
 
 export default () => {
-    function scrollTop(e) {
-        e.preventDefault();
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-    }
     return (
         <footer id='app-footer'>
             <div className="container">

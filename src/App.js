@@ -9,6 +9,7 @@ import Detail from './pages/Detail';
 import Bookmark from "./pages/Bookmark";
 import Search from './pages/Search';
 import AsideMenu from './components/AsideMenu';
+import {scrollTop} from "./helper";
 
 class App extends Component {
     constructor(props) {
@@ -32,6 +33,8 @@ class App extends Component {
         e.preventDefault();
         this.setState({
             showAsideMenu: !this.state.showAsideMenu
+        }, () => {
+            scrollTop(e);
         });
     }
     handleAsideMenuClick(e) {
@@ -45,6 +48,7 @@ class App extends Component {
                 <Header
                     handleSearchClick={this.handleSearchClick}
                     handleBarClick={this.handleBarClick}
+                    handleCancelClick={this.handleBarClick}
                 />
                 {this.state.showAsideMenu ? <AsideMenu handleAsideMenuClick={this.handleAsideMenuClick}/> : ''}
                 <Switch>

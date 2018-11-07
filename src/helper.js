@@ -34,12 +34,19 @@ function isBookmarked(itemUrl, bookmarks) {
     return arr.length > 0;
 }
 
+function scrollTop(e) {
+    e.preventDefault();
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+
 let helper = {
     extractResource,
     toArr,
     toObj,
-    isBookmarked
+    isBookmarked,
+    scrollTop
 };
 
-export {extractResource, toArr, toObj, isBookmarked};
+export {extractResource, toArr, toObj, isBookmarked, scrollTop};
 export default helper;
