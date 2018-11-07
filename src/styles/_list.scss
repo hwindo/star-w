@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   list-style: none;
-
   display: flex;
   flex-flow: row wrap;
 }
@@ -33,12 +32,12 @@ $item-height: 274px;
     margin-left: 1.618em;
     margin-right: 1em;
   }
-  &.loading-bar {
+
+  &.full {
     flex: 100%;
-    font-size: .618em;
-    color: $body-light;
     background-color: transparent;
   }
+
 }
 
 .resource-tag {
@@ -77,4 +76,21 @@ $item-height: 274px;
       color: $orange;
     }
   }
+}
+
+.loading-bar {
+  position: fixed;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  height: $item-height;
+  bottom: $footer-min-height;
+  width: 100%;
+
+  font-size: 1.618em;
+  color: $body-light;
+  background-color: $body;
+  width: 100%;
+  z-index: 100;
 }

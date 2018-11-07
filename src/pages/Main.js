@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import api from '../api';
 import ListItem from '../components/ListItem';
+import LoadingBar from '../components/LoadingBar';
 
 class Main extends Component {
     constructor(props) {
@@ -44,8 +45,6 @@ class Main extends Component {
             window.addEventListener('scroll', this.handleAtBottom);
         });
         // let page = this.searchPage ? this.searchPage : this.state.page;
-
-
 
         let page = this.state.page;
         api.resource.list(resource ? resource : this.resource, page)
@@ -123,10 +122,10 @@ class Main extends Component {
         const items = this.state.list.map(item => <ListItem key={item.name || item.title} resource={this.resource}
                                                             data={item}/>);
         return (
-            <div>
+            <div id='main'>
                 <header className='page-header'>
                     <h1 className='title'>{this.resource}</h1>
-                    {/*<p className='subtitle'>The {this.resource}</p>*/}
+
                     <div className='action'>
                         {/*<button onClick={this.loadMore}>Load More</button>*/}
                         {/*<button onClick={this.logResource}>Log Resource</button>*/}
@@ -136,10 +135,9 @@ class Main extends Component {
                 {/*TODO: put on its own component*/}
                 <ul className='list-container'>
                     {items}
-                    {this.state.loading ? <li className='list-item loading-bar'>
-                        <div className='title'><i className='fa fa-fw fa-spin fa-circle-o-notch'/>Loading...</div>
-                    </li> : ''}
+                    <li className='list-item full'></li>
                 </ul>
+                {this.state.loading ? <LoadingBar />: ''}
             </div>
         )
     }
