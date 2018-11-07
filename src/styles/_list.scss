@@ -31,13 +31,27 @@ $item-height: 274px;
     font-weight: 700;
     margin-left: 1.618em;
     margin-right: 1em;
+    a {
+      color: $body;
+      height: $item-height;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      &:hover {
+        text-decoration: none;
+        color: $orange;
+        
+      }
+    }
+
   }
 
   &.full {
     flex: 100%;
     background-color: transparent;
   }
-
 }
 
 .resource-tag {
