@@ -48,6 +48,8 @@ class Main extends Component {
     }
 
     initialLoad(resource) {
+        document.getElementById('filter-input').focus();
+
         if (api.storage.check()) {
             this.setState({
                 bookmarks: api.storage.load()
@@ -218,7 +220,7 @@ class Main extends Component {
                     {this.props.showSearchInput ? <SearchInput /> : ''}
                     <h1 className='title'>{this.resource}</h1>
                     <div className='action'>
-                        <input className='filter-input' type='text' onChange={this.handleFilterTxtChange}
+                        <input id="filter-input" className='filter-input' type='text' onChange={this.handleFilterTxtChange}
                                placeholder='filter title or name' value={this.state.filterTxt}/>
                         sort by:
                         <select name='sort-val' value={this.state.sortVal} className='select-input'

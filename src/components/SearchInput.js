@@ -12,7 +12,7 @@ class SearchInput extends Component {
     }
 
     componentWillUnmount() {
-
+        window.removeEventListener('keydown', this.handleKeydown);
     }
 
 
