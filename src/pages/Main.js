@@ -100,7 +100,6 @@ class Main extends Component {
         api.resource.list(this.resource, page)
             .then(res => {
                 const {results} = res.data;
-                console.log('results:', results);
                 for (let value of results) {
                     currentList.push(value);
                 }
