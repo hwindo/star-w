@@ -8,7 +8,6 @@
 
 $item-height: 274px;
 
-
 .list-item {
   flex: 25% 1;
   position: relative;
@@ -31,6 +30,7 @@ $item-height: 274px;
     font-weight: 700;
     margin-left: 1.618em;
     margin-right: 1em;
+
     a {
       color: $body;
       height: $item-height;
@@ -39,10 +39,11 @@ $item-height: 274px;
       justify-content: center;
       align-items: center;
       text-align: center;
+
       &:hover {
         text-decoration: none;
         color: $orange;
-        
+
       }
     }
 
@@ -68,9 +69,11 @@ $item-height: 274px;
 
   display: flex;
   height: 1.618em;
+
   > .title {
     font-size: 1.618em;
   }
+
   > .block {
     display: block;
     margin-left: .618em;
@@ -84,8 +87,10 @@ $item-height: 274px;
   position: absolute;
   right: 0;
   top: -10px;
+
   a {
     color: $blue-dark;
+
     &:hover {
       color: $orange;
     }
@@ -107,11 +112,13 @@ $item-height: 274px;
   background-color: $body;
   width: 100%;
   z-index: 100;
+
   > .title {
     line-height: 1.618em;
     font-weight: 700;
     margin-bottom: .382em;
   }
+
   > .subtitle {
     font-weight: 300;
     line-height: 1.2em;
