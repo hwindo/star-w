@@ -4,6 +4,7 @@ import LoadingBar from '../components/LoadingBar';
 import BookmarkBtn from "../components/BookmarkBtn";
 import DetailItem from "../components/DetailItem";
 import {isBookmarked} from "../helper";
+import SearchInput from "../components/SearchInput";
 
 class Detail extends Component {
     constructor(props) {
@@ -116,6 +117,7 @@ class Detail extends Component {
             return (
                 <div id="main">
                     <header className='page-header'>
+                        {this.props.showSearchInput ? <SearchInput /> : ''}
                         <h1 className='title'>{this.title}</h1>
                         <p className='subtitle'>{this.resource}</p>
                         <p className='description'>{description}</p>

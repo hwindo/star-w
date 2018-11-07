@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import api from '../api';
 import ListItem from "../components/ListItem";
 import {isBookmarked} from "../helper";
+import SearchInput from "../components/SearchInput";
 
 
 class Bookmark extends Component {
@@ -58,6 +59,7 @@ class Bookmark extends Component {
         return (
             <div id="main">
                 <header className='page-header'>
+                    {this.props.showSearchInput ? <SearchInput /> : ''}
                     <h1 className='title'>Bookmark</h1>
                     <div className="action">
                         {items.length !== 0 ? <a className='clear-bookmark' href="/" onClick={this.handleClearBookmark}>clear bookmark</a> : ''}
