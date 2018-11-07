@@ -11,11 +11,15 @@ class Main extends Component {
             page: 1,
             loading: false,
             atBottom: false,
-            filterTxt: ''
+            filterTxt: '',
+            sortVal: '',
+            sortType: 'ASC'
         };
         this.loadMore = this.loadMore.bind(this);
         this.handleAtBottom = this.handleAtBottom.bind(this);
         this.handleFilterTxtChange = this.handleFilterTxtChange.bind(this);
+        this.handleSelectSortVal = this.handleSelectSortVal.bind(this);
+        this.handleSortType = this.handleSortType.bind(this);
     }
 
     get resource() {
@@ -119,7 +123,7 @@ class Main extends Component {
     get filteredList() {
         if (this.state.filterTxt !== '' && this.state.list.length !== 0) {
             let regex = new RegExp('' + this.state.filterTxt, 'i');
-            return this.state.list.filter( item => {
+            return this.state.list.filter(item => {
                 if (item.title) {
                     return item.title.match(regex);
                 } else {
@@ -131,23 +135,70 @@ class Main extends Component {
         }
     }
 
+    get sortedFilteredList() {
+        let type = this.state.sortType;
+        if (this.state.sortVal !== '') {
+            return this.filteredList.sort((a, b) => {
+                if (type === 'ASC') {
+                    return a[this.state.sortVal] - b[this.state.sortVal];
+                } else {
+                    return b[this.state.sortVal] - a[this.state.sortVal];
+                }
+            });
+        } else {
+            return this.filteredList;
+        }
+    }
+
     handleFilterTxtChange(e) {
         this.setState({
             filterTxt: e.target.value
         });
     }
 
+    handleSelectSortVal(e) {
+        this.setState({
+            sortVal: e.target.value
+        });
+    }
+
+    handleSortType(e) {
+        this.setState({
+            sortType: e.target.value
+        });
+    }
+
     render() {
-        const items = this.filteredList.map(item => <ListItem key={item.name || item.title} resource={this.resource}
-                                                            data={item}/>);
+        const items = this.sortedFilteredList.map(item => <ListItem key={item.name || item.title}
+                                                                    resource={this.resource}
+                                                                    data={item}/>);
+        // sort
+        const sampleItem = this.sortedFilteredList[0];
+        let keys = [];
+        for (let key in sampleItem) {
+            keys.push(key);
+        }
+        const options = keys.map(item => {
+            return <option key={item} value={item}>{item}</option>
+        });
+
         return (
             <div id='main'>
                 <header className='page-header'>
                     <h1 className='title'>{this.resource}</h1>
                     <div className='action'>
-                        <input className='filter-input' type='text' onChange={this.handleFilterTxtChange} placeholder='filter title or name' value={this.state.filterTxt}/>
-                        {/*<button onClick={this.loadMore}>Load More</button>*/}
-                        {/*<button onClick={this.logResource}>Log Resource</button>*/}
+                        <input className='filter-input' type='text' onChange={this.handleFilterTxtChange}
+                               placeholder='filter title or name' value={this.state.filterTxt}/>
+                        sort by:
+                        <select name='sort-val' value={this.state.sortVal} className='select-input'
+                                onChange={this.handleSelectSortVal}>
+                            <option value="">select property</option>
+                            {options}
+                        </select>
+                        <select name="sort-type" onChange={this.handleSortType} className='select-input'>
+                            <option value="ASC">Ascending</option>
+                            <option value="DSC">Descending</option>
+                        </select>
                     </div>
                 </header>
 

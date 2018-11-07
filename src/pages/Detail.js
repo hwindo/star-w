@@ -43,7 +43,6 @@ class Detail extends Component {
         });
         api.resource.get(resource, id)
             .then(res => {
-                console.log('res.data', res.data);
                 this.setState({
                     item: res.data,
                     loading: false
