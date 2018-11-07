@@ -68,7 +68,15 @@ class Detail extends Component {
 
     handleBookmarkClick(item) {
         let newArr = this.state.bookmarks;
-        newArr.push(item);
+        let urls = newArr.map(_item => _item.url);
+        let index = urls.indexOf(item.url);
+
+        if (index < 0) {
+            newArr.push(item);
+        } else {
+            newArr.splice(index, 1);
+        }
+
         this.setState({
             bookmarks: newArr
         }, () => {

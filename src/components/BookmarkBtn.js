@@ -5,14 +5,15 @@ class BookmarkBtn extends Component {
         super(props);
         this.handleBtnClick = this.handleBtnClick.bind(this);
     }
+
     handleBtnClick(e) {
         e.preventDefault();
-        console.log(this.props.title, this.props.resource, this.props.id, this.props.url);
+        let {url, resource, id, title} = this.props;
         this.props.handleBookmarkClick({
-            url: this.props.url,
-            resource: this.props.resource,
-            id: this.props.id,
-            title: this.props.title
+            url: url,
+            resource: resource,
+            id: id,
+            title: title
         });
     }
 
