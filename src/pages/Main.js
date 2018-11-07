@@ -8,10 +8,12 @@ class Main extends Component {
         this.state = {
             list: [],
             page: 1,
-            loading: false
+            loading: false,
+            atBottom: false,
         };
         this.loadMore = this.loadMore.bind(this);
         this.logResource = this.logResource.bind(this);
+        this.handleAtBottom = this.handleAtBottom.bind(this);
     }
 
     get resource() {
@@ -22,16 +24,29 @@ class Main extends Component {
         this.initialLoad();
     }
 
+    componentWillUnmount() {
+        // window.removeEventListener('scroll', this.handleAtBottom);
+    }
+
     componentWillReceiveProps(nextProps, nextContext) {
-        this.setState({ page: 1 }, () => {
+        this.setState({page: 1}, () => {
             this.initialLoad(nextProps.match.params.resource);
         });
-
     }
 
     initialLoad(resource) {
-        this.setState({list: [], loading: true});
+        this.setState({
+            list: [],
+            loading: true,
+            atBottom: this.atBottom
+        }, () => {
+            // listen scroll
+            window.addEventListener('scroll', this.handleAtBottom);
+        });
         // let page = this.searchPage ? this.searchPage : this.state.page;
+
+
+
         let page = this.state.page;
         api.resource.list(resource ? resource : this.resource, page)
             .then(res => {
@@ -43,15 +58,27 @@ class Main extends Component {
             })
             .catch(err => {
                 console.error(err);
+                this.setState({
+                    loading: false
+                });
             });
     }
 
+    handleAtBottom() {
+        this.setState({
+            atBottom: this.atBottom
+        }, () => {
+            if (this.state.atBottom) {
+                this.loadMore();
+            }
+        });
+    }
+
     loadMore() {
-        this.setState({ loading: true });
+        this.setState({loading: true});
         let page = this.state.page + 1;
         let currentList = this.state.list;
-
-        console.log(this.resource, 'page:',  page);
+        console.log(this.resource, 'page:', page);
         api.resource.list(this.resource, page)
             .then(res => {
                 const {results} = res.data;
@@ -69,7 +96,18 @@ class Main extends Component {
             })
             .catch(err => {
                 console.error(err);
+                this.setState({
+                    loading: false
+                });
             });
+    }
+
+    get atBottom() {
+        const scrollY = window.scrollY;
+        const visibleScreen = document.documentElement.clientHeight;
+        const pageHeight = document.documentElement.scrollHeight;
+        const bottomOfPage = scrollY + visibleScreen >= pageHeight;
+        return bottomOfPage || pageHeight < visibleScreen;
     }
 
     get searchPage() {
@@ -82,22 +120,25 @@ class Main extends Component {
     }
 
     render() {
-        const items = this.state.list.map(item => <ListItem key={item.name || item.title} resource={this.resource} data={item} />);
+        const items = this.state.list.map(item => <ListItem key={item.name || item.title} resource={this.resource}
+                                                            data={item}/>);
         return (
             <div>
                 <header className='page-header'>
                     <h1 className='title'>{this.resource}</h1>
-                    <p className='subtitle'>The {this.resource}</p>
+                    {/*<p className='subtitle'>The {this.resource}</p>*/}
                     <div className='action'>
-                        {this.state.loading ? <p><i className='fa fa-fw fa-spin fa-circle-o-notch'/> Loading...</p> : ''}
-                        <button onClick={this.loadMore}>Load More</button>
-                        <button onClick={this.logResource}>Log Resource</button>
+                        {/*<button onClick={this.loadMore}>Load More</button>*/}
+                        {/*<button onClick={this.logResource}>Log Resource</button>*/}
                     </div>
                 </header>
 
                 {/*TODO: put on its own component*/}
                 <ul className='list-container'>
                     {items}
+                    {this.state.loading ? <li className='list-item loading-bar'>
+                        <div className='title'><i className='fa fa-fw fa-spin fa-circle-o-notch'/>Loading...</div>
+                    </li> : ''}
                 </ul>
             </div>
         )
