@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import api from '../api';
 import LoadingBar from '../components/LoadingBar';
 import BookmarkBtn from "../components/BookmarkBtn";
+import DetailItem from "../components/DetailItem";
 
 
 class Detail extends Component {
@@ -10,7 +11,8 @@ class Detail extends Component {
         this.state = {
             item: {},
             loading: false
-        }
+        };
+        this.handleMount = this.handleMount.bind(this);
     }
 
     get resource() {
@@ -26,10 +28,20 @@ class Detail extends Component {
     }
 
     componentDidMount() {
+        this.handleMount(this.props);
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        this.handleMount(nextProps);
+    }
+
+    handleMount(props) {
+        let resource = props.match.params.resource;
+        let id = props.match.params.id;
         this.setState({
             loading: true
         });
-        api.resource.get(this.resource, this.id)
+        api.resource.get(resource, id)
             .then(res => {
                 console.log('res.data', res.data);
                 this.setState({
@@ -48,10 +60,7 @@ class Detail extends Component {
     render() {
         let list = [];
         for (let k in this.state.item) {
-            list.push(<tr key={k}>
-                <td>{k}</td>
-                <td>{this.state.item[k]}</td>
-            </tr>)
+            list.push(<DetailItem key={k} name={k} val={this.state.item[k]}/>)
         }
         let description = '';
         switch (this.resource) {
