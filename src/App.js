@@ -4,7 +4,7 @@ import {Route, Switch} from "react-router-dom";
 
 import Header from './pages/Header';
 import Footer from './pages/Footer';
-import List from './pages/List';
+import Main from './pages/Main';
 
 class App extends Component {
     render() {
@@ -13,8 +13,8 @@ class App extends Component {
                 <Header/>
                 <div id="main">
                     <Switch>
-                        <Route exact path="/" component={List} />
-                        <Route exact path="/:resource" component={List} />
+                        <Route exact path="/" component={Main} />
+                        <Route exact path="/:resource" component={Main} />
                     </Switch>
                 </div>
                 <Footer/>

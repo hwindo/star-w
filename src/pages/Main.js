@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import api from '../api';
 
-class List extends Component {
+class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -10,6 +10,7 @@ class List extends Component {
             loading: false
         };
         this.loadMore = this.loadMore.bind(this);
+        this.logResource = this.logResource.bind(this);
     }
 
     get resource() {
@@ -41,15 +42,16 @@ class List extends Component {
             });
     }
 
-    loadMore(resource) {
+    loadMore() {
         this.setState({ loading: true });
         let page = this.state.page + 1;
-        let _resource = resource ? resource : this.resource;
-        console.log(_resource, page);
-        api.resource.list(_resource, page)
+        let currentList = this.state.list;
+
+        console.log(this.resource, 'page:',  page);
+        api.resource.list(this.resource, page)
             .then(res => {
-                let currentList = this.state.list;
                 const {results} = res.data;
+                console.log('results:', results);
                 for (let value of results) {
                     currentList.push(value);
                 }
@@ -57,7 +59,9 @@ class List extends Component {
                     list: currentList,
                     loading: false,
                     page: page
-                })
+                }, () => {
+                    console.log('state list:', this.state.list);
+                });
             })
             .catch(err => {
                 console.error(err);
@@ -69,14 +73,20 @@ class List extends Component {
         return search.slice(search.length - 1, search.length);
     }
 
+    logResource() {
+        console.log(this.resource);
+    }
+
     render() {
         const items = this.state.list.map(item => <li key={item.name || item.title}>{item.name || item.title}</li>);
         return (
             <div>
-                <h1>{this.resource} - {this.searchPage}</h1>
+                <h1>{this.resource}</h1>
                 <p>The {this.resource}</p>
                 {this.state.loading ? <p><i className='fa fa-fw fa-spin fa-circle-o-notch'/> Loading...</p> : ''}
                 <button onClick={this.loadMore}>Load More</button>
+                <button onClick={this.logResource}>Log Resource</button>
+                {/*TODO: put on its own component*/}
                 <ul>
                     {items}
                 </ul>
@@ -85,4 +95,4 @@ class List extends Component {
     }
 }
 
-export default List;
+export default Main;
