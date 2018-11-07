@@ -5,6 +5,7 @@ import {Route, Switch} from "react-router-dom";
 import Header from './pages/Header';
 import Footer from './pages/Footer';
 import Main from './pages/Main';
+import Detail from './pages/Detail';
 
 class App extends Component {
     render() {
@@ -14,6 +15,7 @@ class App extends Component {
                 <Switch>
                     <Route exact path="/" component={Main} />
                     <Route exact path="/:resource" component={Main} />
+                    <Route exact path="/:resource/:id" component={Detail} />
                 </Switch>
                 <Footer/>
             </div>

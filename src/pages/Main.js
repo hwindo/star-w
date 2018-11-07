@@ -26,7 +26,7 @@ class Main extends Component {
     }
 
     componentWillUnmount() {
-        // window.removeEventListener('scroll', this.handleAtBottom);
+        window.removeEventListener('scroll', this.handleAtBottom);
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
@@ -77,7 +77,6 @@ class Main extends Component {
         this.setState({loading: true});
         let page = this.state.page + 1;
         let currentList = this.state.list;
-        console.log(this.resource, 'page:', page);
         api.resource.list(this.resource, page)
             .then(res => {
                 const {results} = res.data;
@@ -89,8 +88,6 @@ class Main extends Component {
                     list: currentList,
                     loading: false,
                     page: page
-                }, () => {
-                    console.log('state list:', this.state.list);
                 });
             })
             .catch(err => {
@@ -125,7 +122,6 @@ class Main extends Component {
             <div id='main'>
                 <header className='page-header'>
                     <h1 className='title'>{this.resource}</h1>
-
                     <div className='action'>
                         {/*<button onClick={this.loadMore}>Load More</button>*/}
                         {/*<button onClick={this.logResource}>Log Resource</button>*/}

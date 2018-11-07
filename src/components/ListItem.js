@@ -8,7 +8,7 @@ class ListItem extends Component {
         super(props);
         this.state = {
             resource: this.props.resource,
-            id: ''
+            id: extractResource(this.props.data.url).id
         }
     }
 
@@ -16,22 +16,21 @@ class ListItem extends Component {
         return this.props.data.name ? this.props.data.name : this.props.data.title;
     }
 
-
-
     render() {
         return (
             <li className='list-item'>
 
                 <div className="resource-tag">
                     <div className="title">{this.props.resource}</div>
-                    <div className='block'> </div>
+                    <div className='block'></div>
                 </div>
                 <div className="title">
-                    <NavLink to={'/' + extractResource(this.props.data.url).resource + '/' + extractResource(this.props.data.url).id}>
+                    <NavLink
+                        to={'/' + extractResource(this.props.data.url).resource + '/' + extractResource(this.props.data.url).id}>
                         {this.title}
                     </NavLink>
                 </div>
-                <BookmarkBtn resource={this.props.resource} />
+                <BookmarkBtn resource={this.props.resource} id={this.state.id} url={this.props.data.url} title={this.title}/>
 
             </li>
         )

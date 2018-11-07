@@ -1,0 +1,27 @@
+.detail-content {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: $body-light;
+  color: $body;
+  width: 83%;
+  overflow: auto;
+  padding: 2em;
+
+  > table {
+    background-color: $white;
+    box-shadow: .618em .618em 0 rgba(0, 0, 0, .16);
+    td, th {
+      &:first-child {
+        font-weight: 700;
+        background-color: $orange;
+        color: $white;
+      }
+      padding: .382em;
+      border: 1px solid $body;
+      max-width: 61.8vw;
+    }
+
+  }
+}

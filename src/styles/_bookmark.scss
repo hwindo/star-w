@@ -1,0 +1,9 @@
+.bookmark-normal {
+  > a {
+    color: $body-light;
+    &:hover, &.bookmarked {
+      text-decoration: none;
+      color: $orange;
+    }
+  }
+}
