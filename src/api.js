@@ -8,6 +8,9 @@ const api = {
             console.log('getting api resource', name, 'page:', page);
             let _page = page ? '?page=' + page : '';
             return axios.get(baseAPIUrl + name + _page);
+        },
+        get(name, id) {
+            return axios.get(baseAPIUrl + name + '/' + id);
         }
     }
 };
