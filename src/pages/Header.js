@@ -22,7 +22,7 @@ const Header = () => {
                     </li>
                 </ul>
                 <div>
-                    <a className='search-icon'>
+                    <a href="/" className='search-icon'>
                         search
                         <i className='fa fa-fw fa-search' />
                     </a>
