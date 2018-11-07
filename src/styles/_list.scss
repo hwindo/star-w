@@ -1,0 +1,61 @@
+.list-container {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  display: flex;
+  flex-flow: row wrap;
+}
+
+$item-height: 274px;
+
+
+.list-item {
+  flex: 25% 1;
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+
+  background-color: $body-light;
+  border: 3px solid $body;
+  color: $blue-dark;
+
+  height: $item-height;
+
+  > .title {
+    font-size: 1.618 * 1.618em;
+    line-height: 1.1em;
+    font-weight: 700;
+    margin-left: 1.618em;
+  }
+}
+
+.resource-tag {
+  position: absolute;
+  left: -120px;
+  //top: 0;
+  //bottom: 0;
+
+  padding-left: .382em;
+  padding-right: .382em;
+
+  transform: rotate(-90deg);
+  width: $item-height;
+
+  display: flex;
+  height: 1.618em;
+  > .title {
+    font-size: 1.618em;
+  }
+  > .block {
+    display: block;
+    margin-left: .618em;
+    background-color: white;
+    width: $item-height;
+    height: 100%;
+  }
+}

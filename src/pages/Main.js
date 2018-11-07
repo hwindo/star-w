@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import api from '../api';
+import ListItem from '../components/ListItem';
 
 class Main extends Component {
     constructor(props) {
@@ -81,16 +82,21 @@ class Main extends Component {
     }
 
     render() {
-        const items = this.state.list.map(item => <li key={item.name || item.title}>{item.name || item.title}</li>);
+        const items = this.state.list.map(item => <ListItem key={item.name || item.title} resource={this.resource} data={item} />);
         return (
             <div>
-                <h1>{this.resource}</h1>
-                <p>The {this.resource}</p>
-                {this.state.loading ? <p><i className='fa fa-fw fa-spin fa-circle-o-notch'/> Loading...</p> : ''}
-                <button onClick={this.loadMore}>Load More</button>
-                <button onClick={this.logResource}>Log Resource</button>
+                <header className='page-header'>
+                    <h1 className='title'>{this.resource}</h1>
+                    <p className='subtitle'>The {this.resource}</p>
+                    <div className='action'>
+                        {this.state.loading ? <p><i className='fa fa-fw fa-spin fa-circle-o-notch'/> Loading...</p> : ''}
+                        <button onClick={this.loadMore}>Load More</button>
+                        <button onClick={this.logResource}>Log Resource</button>
+                    </div>
+                </header>
+
                 {/*TODO: put on its own component*/}
-                <ul>
+                <ul className='list-container'>
                     {items}
                 </ul>
             </div>
