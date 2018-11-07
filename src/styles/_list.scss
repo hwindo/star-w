@@ -83,20 +83,6 @@ $item-height: 274px;
   }
 }
 
-.bookmark-btn {
-  position: absolute;
-  right: 0;
-  top: -10px;
-
-  a {
-    color: $blue-dark;
-
-    &:hover {
-      color: $orange;
-    }
-  }
-}
-
 .loading-bar {
   position: fixed;
   display: flex;

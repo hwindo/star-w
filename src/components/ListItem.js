@@ -38,7 +38,14 @@ class ListItem extends Component {
                         {this.title}
                     </NavLink>
                 </div>
-                <BookmarkBtn resource={this.resource} id={this.state.id} url={this.props.data.url} title={this.title}/>
+                <BookmarkBtn
+                    resource={this.resource}
+                    id={this.state.id}
+                    url={this.props.data.url}
+                    title={this.title}
+                    isBookmarked={this.props.isBookmarked}
+                    handleBookmarkClick={this.props.handleBookmarkClick}
+                />
 
             </li>
         )

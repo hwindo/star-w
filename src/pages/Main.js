@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import api from '../api';
 import ListItem from '../components/ListItem';
 import LoadingBar from '../components/LoadingBar';
+import {isBookmarked} from '../helper';
 
 class Main extends Component {
     constructor(props) {
@@ -13,13 +14,15 @@ class Main extends Component {
             atBottom: false,
             filterTxt: '',
             sortVal: '',
-            sortType: 'ASC'
+            sortType: 'ASC',
+            bookmarks: []
         };
         this.loadMore = this.loadMore.bind(this);
         this.handleAtBottom = this.handleAtBottom.bind(this);
         this.handleFilterTxtChange = this.handleFilterTxtChange.bind(this);
         this.handleSelectSortVal = this.handleSelectSortVal.bind(this);
         this.handleSortType = this.handleSortType.bind(this);
+        this.handleBookmarkClick = this.handleBookmarkClick.bind(this);
     }
 
     get resource() {
@@ -176,8 +179,20 @@ class Main extends Component {
         });
     }
 
+    handleBookmarkClick(item) {
+        let newArr = this.state.bookmarks;
+        newArr.push(item);
+        this.setState({
+            bookmarks: newArr
+        }, () => {
+            api.storage.save(this.state.bookmarks)
+        });
+    }
+
     render() {
         const items = this.sortedFilteredList.map(item => <ListItem key={item.name || item.title}
+                                                                    isBookmarked={isBookmarked(item.url, this.state.bookmarks)}
+                                                                    handleBookmarkClick={this.handleBookmarkClick}
                                                                     data={item}/>);
         // sort
         const sampleItem = this.sortedFilteredList[0];

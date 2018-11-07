@@ -29,11 +29,17 @@ function toArr(obj) {
     return newArr.sort();
 }
 
+function isBookmarked(itemUrl, bookmarks) {
+    let arr = bookmarks.filter(item => item.url === itemUrl);
+    return arr.length > 0;
+}
+
 let helper = {
     extractResource,
     toArr,
-    toObj
+    toObj,
+    isBookmarked
 };
 
-export {extractResource, toArr, toObj};
+export {extractResource, toArr, toObj, isBookmarked};
 export default helper;

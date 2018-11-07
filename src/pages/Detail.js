@@ -3,15 +3,18 @@ import api from '../api';
 import LoadingBar from '../components/LoadingBar';
 import BookmarkBtn from "../components/BookmarkBtn";
 import DetailItem from "../components/DetailItem";
+import {isBookmarked} from "../helper";
 
 class Detail extends Component {
     constructor(props) {
         super(props);
         this.state = {
             item: {},
-            loading: false
+            loading: false,
+            bookmarks: []
         };
         this.handleMount = this.handleMount.bind(this);
+        this.handleBookmarkClick = this.handleBookmarkClick.bind(this);
     }
 
     get resource() {
@@ -35,6 +38,14 @@ class Detail extends Component {
     }
 
     handleMount(props) {
+        if (api.storage.check()) {
+            this.setState({
+                bookmarks: api.storage.load()
+            });
+        } else {
+            console.log('no storage');
+        }
+
         let resource = props.match.params.resource;
         let id = props.match.params.id;
         this.setState({
@@ -53,6 +64,16 @@ class Detail extends Component {
                     loading: false
                 })
             });
+    }
+
+    handleBookmarkClick(item) {
+        let newArr = this.state.bookmarks;
+        newArr.push(item);
+        this.setState({
+            bookmarks: newArr
+        }, () => {
+            api.storage.save(this.state.bookmarks)
+        });
     }
 
     render() {
@@ -91,8 +112,14 @@ class Detail extends Component {
                         <p className='subtitle'>{this.resource}</p>
                         <p className='description'>{description}</p>
                         <div className="action">
-                            <BookmarkBtn type='normal' id={this.id} resource={this.resource} url={this.state.item.url}
-                                         title={this.title}/>
+                            <BookmarkBtn type='normal'
+                                         id={this.id}
+                                         resource={this.resource}
+                                         url={this.state.item.url}
+                                         title={this.title}
+                                         isBookmarked={isBookmarked(this.state.item.url, this.state.bookmarks)}
+                                         handleBookmarkClick={this.handleBookmarkClick}
+                            />
                         </div>
                     </header>
                     <div className="detail-content">

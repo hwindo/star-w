@@ -1,9 +1,49 @@
 .bookmark-normal {
   > a {
     color: $body-light;
-    &:hover, &.bookmarked {
+
+    &:hover {
       text-decoration: none;
       color: $orange;
+    }
+  }
+
+  &.bookmarked a {
+    color: $orange;
+
+    &:hover {
+      color: $body-light;
+    }
+  }
+}
+
+.clear-bookmark {
+  color: $white;
+
+  &:hover {
+    text-decoration: none;
+    color: $orange;
+  }
+}
+
+.bookmark-btn {
+  position: absolute;
+  right: 0;
+  top: -10px;
+
+  a {
+    color: $blue-dark;
+
+    &:hover {
+      color: $orange;
+    }
+  }
+
+  &.bookmarked a {
+    color: $orange;
+
+    &:hover {
+      color: $blue-dark;
     }
   }
 }
