@@ -13,7 +13,7 @@ $item-height: 274px;
 .list-item {
   flex: 25% 1;
   position: relative;
-  overflow: hidden;
+  //overflow: hidden;
 
   display: flex;
   flex-flow: row wrap;
@@ -31,6 +31,7 @@ $item-height: 274px;
     line-height: 1.1em;
     font-weight: 700;
     margin-left: 1.618em;
+    margin-right: 1em;
   }
 }
 
@@ -57,5 +58,17 @@ $item-height: 274px;
     background-color: white;
     width: $item-height;
     height: 100%;
+  }
+}
+
+.bookmark-btn {
+  position: absolute;
+  right: 0;
+  top: -10px;
+  a {
+    color: $blue-dark;
+    &:hover {
+      color: $orange;
+    }
   }
 }
