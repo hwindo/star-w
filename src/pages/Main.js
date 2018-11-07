@@ -22,7 +22,10 @@ class Main extends Component {
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
-        this.initialLoad(nextProps.match.params.resource);
+        this.setState({ page: 1 }, () => {
+            this.initialLoad(nextProps.match.params.resource);
+        });
+
     }
 
     initialLoad(resource) {
