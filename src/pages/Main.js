@@ -11,10 +11,11 @@ class Main extends Component {
             page: 1,
             loading: false,
             atBottom: false,
+            filterTxt: ''
         };
         this.loadMore = this.loadMore.bind(this);
-        this.logResource = this.logResource.bind(this);
         this.handleAtBottom = this.handleAtBottom.bind(this);
+        this.handleFilterTxtChange = this.handleFilterTxtChange.bind(this);
     }
 
     get resource() {
@@ -30,7 +31,10 @@ class Main extends Component {
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
-        this.setState({page: 1}, () => {
+        this.setState({
+            page: 1,
+            filterTxt: ''
+        }, () => {
             this.initialLoad(nextProps.match.params.resource);
         });
     }
@@ -39,7 +43,8 @@ class Main extends Component {
         this.setState({
             list: [],
             loading: true,
-            atBottom: this.atBottom
+            atBottom: this.atBottom,
+            filterTxt: ''
         }, () => {
             // listen scroll
             window.addEventListener('scroll', this.handleAtBottom);
@@ -111,18 +116,36 @@ class Main extends Component {
         return search.slice(search.length - 1, search.length);
     }
 
-    logResource() {
-        console.log(this.resource);
+    get filteredList() {
+        if (this.state.filterTxt !== '' && this.state.list.length !== 0) {
+            let regex = new RegExp('' + this.state.filterTxt, 'i');
+            return this.state.list.filter( item => {
+                if (item.title) {
+                    return item.title.match(regex);
+                } else {
+                    return item.name.match(regex);
+                }
+            });
+        } else {
+            return this.state.list;
+        }
+    }
+
+    handleFilterTxtChange(e) {
+        this.setState({
+            filterTxt: e.target.value
+        });
     }
 
     render() {
-        const items = this.state.list.map(item => <ListItem key={item.name || item.title} resource={this.resource}
+        const items = this.filteredList.map(item => <ListItem key={item.name || item.title} resource={this.resource}
                                                             data={item}/>);
         return (
             <div id='main'>
                 <header className='page-header'>
                     <h1 className='title'>{this.resource}</h1>
                     <div className='action'>
+                        <input className='filter-input' type='text' onChange={this.handleFilterTxtChange} placeholder='filter title or name' value={this.state.filterTxt}/>
                         {/*<button onClick={this.loadMore}>Load More</button>*/}
                         {/*<button onClick={this.logResource}>Log Resource</button>*/}
                     </div>
@@ -133,7 +156,7 @@ class Main extends Component {
                     {items}
                     <li className='list-item full'></li>
                 </ul>
-                {this.state.loading ? <LoadingBar />: ''}
+                {this.state.loading ? <LoadingBar/> : ''}
             </div>
         )
     }
