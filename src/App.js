@@ -9,15 +9,29 @@ import Detail from './pages/Detail';
 import Bookmark from "./pages/Bookmark";
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showSearchInput: false
+        };
+        this.handleSearchClick = this.handleSearchClick.bind(this);
+    }
+
+    handleSearchClick(e) {
+        e.preventDefault();
+        this.setState({
+            showSearchInput: !this.state.showSearchInput
+        });
+    }
     render() {
         return (
             <div className="App">
-                <Header/>
+                <Header handleSearchClick={this.handleSearchClick}/>
                 <Switch>
-                    <Route exact path="/" component={Main} />
-                    <Route exact path="/bookmark" component={Bookmark} />
-                    <Route exact path="/:resource" component={Main} />
-                    <Route exact path="/:resource/:id" component={Detail} />
+                    <Route exact path="/" render={(props) => <Main {...props} showSearchInput={this.state.showSearchInput} />} />
+                    <Route exact path="/bookmark" render={(props) => <Bookmark {...props} showSearchInput={this.state.showSearchInput} />} />
+                    <Route exact path="/:resource" render={(props) => <Main {...props} showSearchInput={this.state.showSearchInput} />} />
+                    <Route exact path="/:resource/:id" render={(props) => <Detail {...props} showSearchInput={this.state.showSearchInput} /> } />
                 </Switch>
                 <Footer/>
             </div>

@@ -4,7 +4,7 @@ import logo from "../logo.svg";
 
 const resources = ['people', 'films', 'starships', 'vehicles', 'species', 'planets'];
 
-const Header = () => {
+const Header = (props) => {
     const list = resources.map(item => <li key={item} className='nav-item'><NavLink to={'/' + item}>{item}</NavLink></li>)
     return (
         <header id='app-header'>
@@ -22,7 +22,7 @@ const Header = () => {
                     </li>
                 </ul>
                 <div>
-                    <a href="/" className='search-icon'>
+                    <a href="/" className='search-icon' onClick={props.handleSearchClick}>
                         search
                         <i className='fa fa-fw fa-search' />
                     </a>

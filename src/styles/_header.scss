@@ -38,4 +38,10 @@
 }
 a.search-icon {
   margin-right: 1em;
+  font-size: 1.2em;
+  color: $white;
+  &:hover {
+    color: $blue-dark;
+    text-decoration: none;
+  }
 }

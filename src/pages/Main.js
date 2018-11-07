@@ -3,6 +3,7 @@ import api from '../api';
 import ListItem from '../components/ListItem';
 import LoadingBar from '../components/LoadingBar';
 import {isBookmarked} from '../helper';
+import SearchInput from '../components/SearchInput';
 
 class Main extends Component {
     constructor(props) {
@@ -214,6 +215,7 @@ class Main extends Component {
         return (
             <div id='main'>
                 <header className='page-header'>
+                    {this.props.showSearchInput ? <SearchInput /> : ''}
                     <h1 className='title'>{this.resource}</h1>
                     <div className='action'>
                         <input className='filter-input' type='text' onChange={this.handleFilterTxtChange}
@@ -236,7 +238,9 @@ class Main extends Component {
                     {items}
                     <li className='list-item full'> </li>
                 </ul>
+
                 {this.state.loading ? <LoadingBar/> : ''}
+
             </div>
         )
     }

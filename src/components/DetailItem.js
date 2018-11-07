@@ -3,10 +3,6 @@ import {extractResource} from "../helper";
 import {NavLink} from "react-router-dom";
 
 class DetailItem extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     converter(key) {
         if (key === 'films' || key === 'vehicles' || key === 'starships' || key === 'species' || key === 'homeworld' || key === 'characters' || key === 'planets' ) {
             if (Array.isArray(this.props.val)) {
