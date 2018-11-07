@@ -7,6 +7,7 @@ import Footer from './pages/Footer';
 import Main from './pages/Main';
 import Detail from './pages/Detail';
 import Bookmark from "./pages/Bookmark";
+import Search from './pages/Search';
 
 class App extends Component {
     constructor(props) {
@@ -30,6 +31,7 @@ class App extends Component {
                 <Switch>
                     <Route exact path="/" render={(props) => <Main {...props} showSearchInput={this.state.showSearchInput} />} />
                     <Route exact path="/bookmark" render={(props) => <Bookmark {...props} showSearchInput={this.state.showSearchInput} />} />
+                    <Route exact path="/search/:text" render={(props) => <Search {...props} showSearchInput={this.state.showSearchInput} /> } />
                     <Route exact path="/:resource" render={(props) => <Main {...props} showSearchInput={this.state.showSearchInput} />} />
                     <Route exact path="/:resource/:id" render={(props) => <Detail {...props} showSearchInput={this.state.showSearchInput} /> } />
                 </Switch>

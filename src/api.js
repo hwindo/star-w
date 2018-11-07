@@ -3,15 +3,32 @@ import {toArr, toObj} from "./helper";
 
 const baseAPIUrl = 'https://swapi.co/api/';
 const storageName = 'bookmarks';
+const resources = ['people', 'films', 'starships', 'vehicles', 'species', 'planets'];
 
 const api = {
     resource: {
         list(name, page) {
             let _page = page ? '?page=' + page : '';
             return axios.get(baseAPIUrl + name + _page);
+
         },
         get(name, id) {
             return axios.get(baseAPIUrl + name + '/' + id);
+        },
+        search(text) {
+            return Promise.all([
+                axios.get(baseAPIUrl + resources[0] + '/?search=' + text),
+                axios.get(baseAPIUrl + resources[1] + '/?search=' + text),
+                axios.get(baseAPIUrl + resources[2] + '/?search=' + text),
+                axios.get(baseAPIUrl + resources[3] + '/?search=' + text),
+                axios.get(baseAPIUrl + resources[4] + '/?search=' + text),
+                axios.get(baseAPIUrl + resources[5] + '/?search=' + text)
+            ]).then(res => {
+                console.log('res', res);
+                let arr = [];
+                arr = arr.concat(res[0].data.results, res[1].data.results, res[2].data.results, res[3].data.results, res[4].data.results, res[5].data.results)
+                return Promise.resolve({data: {results: arr}});
+            })
         }
     },
     storage: {
@@ -34,5 +51,5 @@ const api = {
     }
 };
 
-export {baseAPIUrl};
+export {baseAPIUrl, resources, storageName};
 export default api;

@@ -1,8 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import logo from "../logo.svg";
-
-const resources = ['people', 'films', 'starships', 'vehicles', 'species', 'planets'];
+import {resources} from "../api";
 
 const Header = (props) => {
     const list = resources.map(item => <li key={item} className='nav-item'><NavLink to={'/' + item}>{item}</NavLink></li>)

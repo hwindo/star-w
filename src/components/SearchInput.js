@@ -19,8 +19,7 @@ class SearchInput extends Component {
     handleKeydown(e) {
         switch (e.keyCode) {
             case 13:
-                this.props.history.push('/search?=' + e.target.value)
-                console.log(e.target.value);
+                this.props.history.push('/search/' + e.target.value)
                 break;
             case 27:
                 // this.setState({addMode: false});
