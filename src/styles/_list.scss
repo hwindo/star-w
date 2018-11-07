@@ -93,4 +93,13 @@ $item-height: 274px;
   background-color: $body;
   width: 100%;
   z-index: 100;
+  > .title {
+    line-height: 1.618em;
+    font-weight: 700;
+    margin-bottom: .382em;
+  }
+  > .subtitle {
+    font-weight: 300;
+    line-height: 1.2em;
+  }
 }
