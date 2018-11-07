@@ -1,6 +1,8 @@
 # Star-W
 a resource catalog make use of [swapi.co's API](https://swapi.co)
 
+see working demo here [https://bloom-soccer.glitch.me/](https://bloom-soccer.glitch.me/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## usage
