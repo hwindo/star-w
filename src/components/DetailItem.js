@@ -8,7 +8,7 @@ class DetailItem extends React.Component {
     }
 
     converter(key) {
-        if (key === 'films' || key === 'vehicles' || key === 'starships' || key === 'species' || key === 'homeworld') {
+        if (key === 'films' || key === 'vehicles' || key === 'starships' || key === 'species' || key === 'homeworld' || key === 'characters' || key === 'planets' ) {
             if (Array.isArray(this.props.val)) {
                 return this.props.val.map( url => {
                     let id = extractResource(url).id;
