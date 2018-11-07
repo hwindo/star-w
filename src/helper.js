@@ -7,9 +7,33 @@ function extractResource(url) {
     }
 }
 
+/**
+ * converting array to object / hash map
+ */
+function toObj(arr, key) {
+    let res = Object.create(null);
+    for (let i = 0, y = arr.length; i < y; i++) {
+        res[arr[i][key]] = arr[i];
+    }
+    return res;
+}
+
+/**
+ * converting obj to array and sort asc by key
+ */
+function toArr(obj) {
+    let newArr = [];
+    for (let key in obj) {
+        newArr.push(obj[key]);
+    }
+    return newArr.sort();
+}
+
 let helper = {
-    extractResource
+    extractResource,
+    toArr,
+    toObj
 };
 
-export {extractResource};
+export {extractResource, toArr, toObj};
 export default helper;

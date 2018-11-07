@@ -4,7 +4,6 @@ import LoadingBar from '../components/LoadingBar';
 import BookmarkBtn from "../components/BookmarkBtn";
 import DetailItem from "../components/DetailItem";
 
-
 class Detail extends Component {
     constructor(props) {
         super(props);

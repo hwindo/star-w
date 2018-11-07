@@ -44,6 +44,14 @@ class Main extends Component {
     }
 
     initialLoad(resource) {
+        if (api.storage.check()) {
+            this.setState({
+                bookmarks: api.storage.load()
+            });
+        } else {
+            console.log('no storage');
+        }
+
         this.setState({
             list: [],
             loading: true,
@@ -170,7 +178,6 @@ class Main extends Component {
 
     render() {
         const items = this.sortedFilteredList.map(item => <ListItem key={item.name || item.title}
-                                                                    resource={this.resource}
                                                                     data={item}/>);
         // sort
         const sampleItem = this.sortedFilteredList[0];
@@ -205,7 +212,7 @@ class Main extends Component {
                 {/*TODO: put on its own component*/}
                 <ul className='list-container'>
                     {items}
-                    <li className='list-item full'></li>
+                    <li className='list-item full'> </li>
                 </ul>
                 {this.state.loading ? <LoadingBar/> : ''}
             </div>
