@@ -6,6 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## usage
 1. clone this repo and run `npm install` or `yarn install` in terminal, in project's root folder
 2. after packages installation finish, run `npm start` or `yarn start`
+3. open the app default port at `localhost:3000`
 
 ### Keyboard Shortcut
 You can use `Enter` when searching resource

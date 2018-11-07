@@ -8,14 +8,18 @@ import Main from './pages/Main';
 import Detail from './pages/Detail';
 import Bookmark from "./pages/Bookmark";
 import Search from './pages/Search';
+import AsideMenu from './components/AsideMenu';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showSearchInput: false
+            showSearchInput: false,
+            showAsideMenu: false
         };
         this.handleSearchClick = this.handleSearchClick.bind(this);
+        this.handleBarClick = this.handleBarClick.bind(this);
+        this.handleAsideMenuClick = this.handleAsideMenuClick.bind(this);
     }
 
     handleSearchClick(e) {
@@ -24,10 +28,25 @@ class App extends Component {
             showSearchInput: !this.state.showSearchInput
         });
     }
+    handleBarClick(e) {
+        e.preventDefault();
+        this.setState({
+            showAsideMenu: !this.state.showAsideMenu
+        });
+    }
+    handleAsideMenuClick(e) {
+        this.setState({
+            showAsideMenu: !this.state.showAsideMenu
+        });
+    }
     render() {
         return (
             <div className="App">
-                <Header handleSearchClick={this.handleSearchClick}/>
+                <Header
+                    handleSearchClick={this.handleSearchClick}
+                    handleBarClick={this.handleBarClick}
+                />
+                {this.state.showAsideMenu ? <AsideMenu handleAsideMenuClick={this.handleAsideMenuClick}/> : ''}
                 <Switch>
                     <Route exact path="/" render={(props) => <Main {...props} showSearchInput={this.state.showSearchInput} />} />
                     <Route exact path="/bookmark" render={(props) => <Bookmark {...props} showSearchInput={this.state.showSearchInput} />} />

@@ -8,10 +8,13 @@ const Header = (props) => {
     return (
         <header id='app-header'>
             <nav>
+                <div className='bar-menu'>
+                    <a href="/"><i className='fa fa-fw fa-bars fa-2x' onClick={props.handleBarClick}></i></a>
+                </div>
                 <NavLink to="/" className="logo">
                     <img src={logo} className="app-logo -nav" alt="start-w logo"/>
                 </NavLink>
-                <ul>
+                <ul className='desktop-menu'>
                     {list}
                     <li className='nav-item'>
                         <NavLink to='/bookmark'>
