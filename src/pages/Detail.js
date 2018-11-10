@@ -35,7 +35,9 @@ class Detail extends Component {
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
-        this.handleMount(nextProps);
+        if (this.props.showSearchInput === nextProps.showSearchInput) {
+            this.handleMount(nextProps);
+        }
     }
 
     handleMount(props) {

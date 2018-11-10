@@ -39,12 +39,14 @@ class Main extends Component {
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
-        this.setState({
-            page: 1,
-            filterTxt: ''
-        }, () => {
-            this.initialLoad(nextProps.match.params.resource);
-        });
+        if (this.props.showSearchInput === nextProps.showSearchInput) {
+            this.setState({
+                page: 1,
+                filterTxt: ''
+            }, () => {
+                this.initialLoad(nextProps.match.params.resource);
+            });
+        }
     }
 
     initialLoad(resource) {
