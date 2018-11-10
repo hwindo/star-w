@@ -164,9 +164,14 @@ class Main extends Component {
     }
 
     handleFilterTxtChange(e) {
-        this.setState({
-            filterTxt: e.target.value
-        });
+        const val = e.target.value;
+        if (!val.includes('\\')) {
+            this.setState({
+                filterTxt: e.target.value
+            });
+        } else {
+            console.log('your word include restricted type:', val);
+        }
     }
 
     handleSelectSortVal(e) {

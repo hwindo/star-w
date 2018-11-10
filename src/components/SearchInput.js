@@ -15,7 +15,6 @@ class SearchInput extends Component {
         window.removeEventListener('keydown', this.handleKeydown);
     }
 
-
     handleKeydown(e) {
         switch (e.keyCode) {
             case 13:
