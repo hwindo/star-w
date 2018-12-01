@@ -30,6 +30,7 @@ class App extends Component {
         });
     }
     handleBarClick(e) {
+        e.persist();
         e.preventDefault();
         this.setState({
             showAsideMenu: !this.state.showAsideMenu

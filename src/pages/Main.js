@@ -73,8 +73,8 @@ class Main extends Component {
 
         let page = this.state.page;
         api.resource.list(resource ? resource : this.resource, page)
-            .then(res => {
-                const {results} = res.data;
+            .then(async (res) => {
+                const {results} = await res.data;
                 this.setState({
                     list: results,
                     loading: false
@@ -103,8 +103,8 @@ class Main extends Component {
         let page = this.state.page + 1;
         let currentList = this.state.list;
         api.resource.list(this.resource, page)
-            .then(res => {
-                const {results} = res.data;
+            .then(async (res) => {
+                const {results} = await res.data;
                 for (let value of results) {
                     currentList.push(value);
                 }
