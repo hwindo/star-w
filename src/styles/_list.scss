@@ -28,8 +28,6 @@ $item-height: 274px;
     font-size: 1.618 * 1.618em;
     line-height: 1.1em;
     font-weight: 700;
-    margin-left: 1.618em;
-    margin-right: 1em;
 
     a {
       color: $body;
@@ -39,6 +37,8 @@ $item-height: 274px;
       justify-content: center;
       align-items: center;
       text-align: center;
+      padding-left: 1.618em;
+      padding-right: 1em;
 
       &:hover {
         text-decoration: none;
