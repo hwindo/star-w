@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  jo:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "A First Hello"
+  jek:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "Double the Jek"
+workflows:
+  version: 2
+  jo_jek:
+    jobs:
+      - jo
+      - jek
