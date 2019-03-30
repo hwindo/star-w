@@ -1,20 +1,33 @@
 version: 2
 jobs:
-  jo:
+  build:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/node:10.15
     steps:
       - checkout
-      - run: echo "A First Hello"
-  jek:
+      - run: echo "npm install"
+      - run: npm install
+      - run: CI=true npm run build
+  test:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/node:10.15
     steps:
       - checkout
-      - run: echo "Double the Jek"
+      - run: echo "Testing Code"
+      - run: npm install
+      - run: npm run test
+  hithere:
+    docker:
+      - image: circleci/node:10.15
+    steps:
+      - checkout
+      - run: echo "Hellow"
 workflows:
   version: 2
-  jo_jek:
+  build_test_and_lint:
     jobs:
-      - jo
-      - jek
+      - build
+      - hithere
+      - test:
+        requires:
+          - hithere
