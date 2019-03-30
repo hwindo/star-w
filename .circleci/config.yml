@@ -2,23 +2,23 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:10.15
+      - image: circleci/node:8.10
     steps:
       - checkout
       - run: echo "npm install"
-      - run: npm install
-      - run: CI=true npm run build
+      - run: yarn
+      - run: CI=true yarn build
   test:
     docker:
-      - image: circleci/node:10.15
+      - image: circleci/node:8.10
     steps:
       - checkout
       - run: echo "Testing Code"
-      - run: npm install
-      - run: npm run test
+      - run: yarn
+      - run: yarn test
   hithere:
     docker:
-      - image: circleci/node:10.15
+      - image: circleci/node:8.10
     steps:
       - checkout
       - run: echo "Hellow"
@@ -29,5 +29,5 @@ workflows:
       - build
       - hithere
       - test:
-        requires:
-          - hithere
+          requires:
+            - hithere
