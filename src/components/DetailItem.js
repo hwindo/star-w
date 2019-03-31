@@ -1,17 +1,27 @@
-import React from 'react';
-import {extractResource} from "../helper";
-import {NavLink} from "react-router-dom";
+import React from "react";
+import { extractResource } from "../helper";
+import { NavLink } from "react-router-dom";
 
 class DetailItem extends React.Component {
     converter(key) {
-        if (key === 'films' || key === 'vehicles' || key === 'starships' || key === 'species' || key === 'homeworld' || key === 'characters' || key === 'planets' ) {
+        if (
+            key === "films" ||
+            key === "vehicles" ||
+            key === "starships" ||
+            key === "species" ||
+            key === "homeworld" ||
+            key === "characters" ||
+            key === "planets"
+        ) {
             if (Array.isArray(this.props.val)) {
-                return this.props.val.map( url => {
+                return this.props.val.map(url => {
                     let id = extractResource(url).id;
                     let resource = extractResource(url).resource;
                     return (
-                        <li key={id} className='item-link'>
-                            <NavLink to={'/' + resource + '/' + id}>{resource + '-' + id}</NavLink>
+                        <li key={id} className="item-link">
+                            <NavLink to={"/" + resource + "/" + id}>
+                                {resource + "-" + id}
+                            </NavLink>
                         </li>
                     );
                 });
@@ -19,12 +29,13 @@ class DetailItem extends React.Component {
                 let id = extractResource(this.props.val).id;
                 let resource = extractResource(this.props.val).resource;
                 return (
-                    <li key={id} className='item-link'>
-                        <NavLink to={'/' + resource + '/' + id}>{resource + '-' + id}</NavLink>
+                    <li key={id} className="item-link">
+                        <NavLink to={"/" + resource + "/" + id}>
+                            {resource + "-" + id}
+                        </NavLink>
                     </li>
                 );
             }
-
         } else {
             return this.props.val;
         }
@@ -38,7 +49,6 @@ class DetailItem extends React.Component {
             </tr>
         );
     }
-
 }
 
 export default DetailItem;
