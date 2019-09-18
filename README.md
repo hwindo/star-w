@@ -1,9 +1,9 @@
 # Star-W
-a resource catalog make use of [swapi.co's API](https://swapi.co)
+A resource catalog, built using React
+Live app here [https://star-w.glitch.me/](https://star-w.glitch.me/)
 
-see working demo here [https://bloom-soccer.glitch.me/](https://bloom-soccer.glitch.me/)
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+API: [swapi.co's API](https://swapi.co)
+This project is bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## usage
 1. clone this repo and run `npm install` or `yarn install` in terminal, in project's root folder
@@ -19,4 +19,4 @@ Each component have their own test
 - To run all test, write `yarn test` from root folder
 
 ### Public API used
-* swapi.co - to get star wars resource
+* swapi.co - to get the resource
