@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/star-w/static/css/main.ec7612ed.chunk.css",
+    "main.js": "/star-w/static/js/main.c385f980.chunk.js",
+    "main.js.map": "/star-w/static/js/main.c385f980.chunk.js.map",
+    "runtime-main.js": "/star-w/static/js/runtime-main.ece419f6.js",
+    "runtime-main.js.map": "/star-w/static/js/runtime-main.ece419f6.js.map",
+    "static/css/2.88d43bb8.chunk.css": "/star-w/static/css/2.88d43bb8.chunk.css",
+    "static/js/2.4f119936.chunk.js": "/star-w/static/js/2.4f119936.chunk.js",
+    "static/js/2.4f119936.chunk.js.map": "/star-w/static/js/2.4f119936.chunk.js.map",
+    "index.html": "/star-w/index.html",
+    "precache-manifest.bdbcb29dd10d0914596929b53fecc01a.js": "/star-w/precache-manifest.bdbcb29dd10d0914596929b53fecc01a.js",
+    "service-worker.js": "/star-w/service-worker.js",
+    "static/css/2.88d43bb8.chunk.css.map": "/star-w/static/css/2.88d43bb8.chunk.css.map",
+    "static/css/main.ec7612ed.chunk.css.map": "/star-w/static/css/main.ec7612ed.chunk.css.map",
+    "static/media/font-awesome.min.css": "/star-w/static/media/fontawesome-webfont.fee66e71.woff",
+    "static/media/logo.svg": "/star-w/static/media/logo.930eab9a.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ece419f6.js",
+    "static/css/2.88d43bb8.chunk.css",
+    "static/js/2.4f119936.chunk.js",
+    "static/css/main.ec7612ed.chunk.css",
+    "static/js/main.c385f980.chunk.js"
+  ]
+}

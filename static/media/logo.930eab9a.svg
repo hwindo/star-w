@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 400 400">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-logo);
+      }
+
+      .cls-2 {
+        fill: #092734;
+      }
+
+      .cls-3, .cls-4 {
+        fill: #fff;
+        font-family: SourceSansPro-Bold, Source Sans Pro;
+        font-weight: 700;
+      }
+
+      .cls-3 {
+        font-size: 60px;
+      }
+
+      .cls-4 {
+        font-size: 251px;
+      }
+    </style>
+    <clipPath id="clip-logo">
+      <rect width="400" height="400"/>
+    </clipPath>
+  </defs>
+  <g id="logo" class="cls-1">
+    <g id="logo-2" data-name="logo" transform="translate(-128.584 37.497)">
+      <rect id="Rectangle_178" data-name="Rectangle 178" class="cls-2" width="70.809" height="163.979" rx="5" transform="translate(193.204 90.716)"/>
+      <text id="STAR" class="cls-3" transform="translate(249.106 243.515) rotate(-90)"><tspan x="0" y="0">STAR</tspan></text>
+      <text id="W" class="cls-4" transform="translate(264.013 252)"><tspan x="0" y="0">W</tspan></text>
+    </g>
+  </g>
+</svg>
