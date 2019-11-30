@@ -1,6 +1,10 @@
 # Star-W
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ce130117-dd9a-457d-b314-d406a3588587/deploy-status)](https://app.netlify.com/sites/star-w/deploys)
+
 A resource catalog, built using React
-Live app here [https://star-w.glitch.me/](https://star-w.glitch.me/)
+Live app here:
+*[star-w.netlify.com](https://star-w.netlify.com)
+*[https://star-w.glitch.me/](https://star-w.glitch.me/)
 
 API: [swapi.co's API](https://swapi.co)
 This project is bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
