@@ -3,8 +3,8 @@
 
 A resource catalog, built using React
 Live app here:
-*[star-w.netlify.com](https://star-w.netlify.com)
-*[https://star-w.glitch.me/](https://star-w.glitch.me/)
+- [star-w.netlify.com](https://star-w.netlify.com)
+- [https://star-w.glitch.me/](https://star-w.glitch.me/)
 
 API: [swapi.co's API](https://swapi.co)
 This project is bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
