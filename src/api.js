@@ -2,6 +2,7 @@ import axios from 'axios';
 import {toArr, toObj} from "./helper";
 
 const baseAPIUrl = 'https://swapi.dev/api/';
+
 const storageName = 'bookmarks';
 const resources = ['people', 'films', 'starships', 'vehicles', 'species', 'planets'];
 
