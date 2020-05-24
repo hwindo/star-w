@@ -4,9 +4,9 @@
 
 ![loading-ag-143](./assets/img/star-w-demo.gif)
 
-![star-w-sceenshot-desktop.png](/Users/windo/Developments/web/star-w/assets/img/star-w-sceenshot-desktop.png)
+![star-w-sceenshot-desktop.png](./assets/img/star-w-sceenshot-desktop.png)
 
-![star-w-sceenshot-mobile.png](/Users/windo/Developments/web/star-w/assets/img/star-w-sceenshot-mobile.png)
+![star-w-sceenshot-mobile.png](./assets/img/star-w-sceenshot-mobile.png)
 
 
 
