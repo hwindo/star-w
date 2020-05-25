@@ -10,17 +10,18 @@ const api = {
     resource: {
         list(name, page) {
             let _page = page ? '?page=' + page : '';
-            if (window.fetch) {
-                return fetch(baseAPIUrl + name + _page)
-                    .then(res => {
-                        return Promise.resolve({data: res.json()});
-                    })
-                    .catch(err => {
-                        return Promise.reject(err);
-                    });
-            } else {
+            // debugger;
+            // if (window.fetch) {
+            //     return fetch(baseAPIUrl + name + _page)
+            //         .then(res => {
+            //             return Promise.resolve({data: res.json()});
+            //         })
+            //         .catch(err => {
+            //             return Promise.reject(err);
+            //         });
+            // } else {
                 return axios.get(baseAPIUrl + name + _page);
-            }
+            // }
         },
         get(name, id) {
             return axios.get(baseAPIUrl + name + '/' + id);
