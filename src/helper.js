@@ -2,8 +2,8 @@ function extractResource(url) {
     const extractor = new RegExp("https?:\\/\\/swapi.(dev|com?|io|net|org)\\/api/([\\w]+)/?([\\d]+)", 'i');
     let res = url.match(extractor);
     return {
-        resource: res[1],
-        id: res[2]
+        resource: res[2], // type string - e.g. people, ship etc
+        id: res[3]
     }
 }
 
