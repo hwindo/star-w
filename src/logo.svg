@@ -11,7 +11,7 @@
 
       .cls-3, .cls-4 {
         fill: #fff;
-        font-family: SourceSansPro-Bold, Source Sans Pro;
+        font-family: SourceSansPro-Bold, Source Sans Pro, sans-serif;
         font-weight: 700;
       }
 
