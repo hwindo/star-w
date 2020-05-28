@@ -2,11 +2,11 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ce130117-dd9a-457d-b314-d406a3588587/deploy-status)](https://app.netlify.com/sites/star-w/deploys)
 
-![loading-ag-143](./assets/img/star-w-demo.gif)
+![Star-W Demo Gif](./assets/img/star-w-demo.gif)
 
-![star-w-sceenshot-desktop.png](./assets/img/star-w-sceenshot-desktop.png)
+![Star-w-Desktop.png](./assets/img/Star-w-Desktop.png)
 
-![star-w-sceenshot-mobile.png](./assets/img/star-w-sceenshot-mobile.png)
+![Star-w-Mobile2.png](./assets/img/Star-w-Mobile2.png)
 
 
 
