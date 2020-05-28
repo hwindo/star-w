@@ -11,10 +11,9 @@
 
 
 A resource catalog, built using React
-Live app here:
 
-- [star-w.netlify.com](https://star-w.netlify.com)
-- [https://star-w.glitch.me/](https://star-w.glitch.me/)
+Live app:
+- [star-w.surge.sh](https://star-w.surge.sh)
 
 API: [swapi.co's API](https://swapi.co)
 This project is bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
